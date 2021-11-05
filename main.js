@@ -18,6 +18,10 @@ function start() {
     newQuestion();
 }
 function newQuestion() {
+    if (score >= 3000) {
+        alert("You win!");
+        window.close();
+    }
     question = {};
     let html = document.getElementById("question");
     while (!operations[question.operation]) {
