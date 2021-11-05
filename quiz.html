@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", sans-serif;
+            text-align: center;
+            background: black;
+            color: white;
+        }
+        #question {
+            font-size: 48px;
+        }
+        #score {
+            font-size: 16px;
+        }
+        button {
+            background: white;
+            color: black;
+            border-style: solid;
+            border-color: white;
+            border-radius: 100px;
+            width: 100px;
+            height: 20px;
+        }
+        button:hover {
+            background: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro">
+        <p>Choose operations</p>
+        <label>
+            <input type="checkbox" id="1" checked>
+            Addition
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" id="2" checked>
+            Subtraction
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" id="3" checked>
+            Multiplication
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" id="4" checked>
+            Division
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" id="5" checked>
+            Exponents
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" id="6" checked>
+            Roots
+        </label>
+        <p>If your answer is a decimal, then round to nearest tenth</p>
+        <label for="diffInc">Difficulty Increase Speed: </label>
+        <input type="number" id="diffInc">
+        <br>
+        <button onclick="start();">Start</button>
+    </div>
+    <div id="game" style="display: none;">
+        <p id="question"></p>
+
+        <label for="answer">Answer</label>
+        <br>
+        <input placeholder="Answer" id="answer" type="number">
+        <br>
+        <button onclick="submit();">Submit</button>
+        <p id="score">Score: 0</p>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
