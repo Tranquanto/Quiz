@@ -4,7 +4,11 @@ let diffInc = 1;
 let question = {};
 let answer;
 function start() {
-    diffInc = Number(document.getElementById("diffInc").value);
+    if (document.getElementById("diffInc").value === undefined) {
+        diffInc = 1;
+    } else {
+        diffInc = Number(document.getElementById("diffInc").value);
+    }
     for (let i = 1; i <= 6; i++) {
         operations[i - 1] = document.getElementById(String(i)).checked;
     }
