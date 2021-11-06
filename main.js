@@ -3,8 +3,11 @@ let score = 0;
 let diffInc = 1;
 let question = {};
 let answer;
+let time = 10000;
+let maxTime = 10000;
+let timerDecrease;
 function start() {
-    if (document.getElementById("diffInc").value === undefined) {
+    if (document.getElementById("diffInc").value == 0) {
         diffInc = 1;
     } else {
         diffInc = Number(document.getElementById("diffInc").value);
@@ -18,6 +21,23 @@ function start() {
     newQuestion();
 }
 function newQuestion() {
+    timerDecrease = setInterval(function() {
+        time -= 20;
+        if (time <= 0) {
+            clearInterval(timerDecrease);
+            score -= diffInc;
+            if (score <= 0) {
+                score = 0;
+            }
+            maxTime *= 1.1;
+            document.getElementById("timer").max = maxTime;
+            time = maxTime;
+            document.getElementById("score").innerText = "Score: " + String(score);
+            newQuestion();
+        }
+        document.getElementById("timerText").innerText = (time / 1000).toFixed(1) + "s";
+        document.getElementById("timer").value = time;
+    }, 20);
     if (score >= 3000) {
         alert("You win!");
         window.close();
@@ -79,11 +99,21 @@ function changeParts() {
 }
 function submit() {
     if (Math.round(Number(document.getElementById("answer").value * 10)) / 10 === Math.round(answer * 10) / 10) {
+        clearInterval(timerDecrease);
+        maxTime /= 1.1;
+        time = maxTime;
+        document.getElementById("timer").max = maxTime;
         score += diffInc;
         document.getElementById("score").innerText = "Score: " + String(score);
         newQuestion();
     } else {
-        alert("Incorrect! Final score: " + score);
+        score -= diffInc;
+        if (score <= 0) {
+            score = 0;
+        }
+        maxTime *= 1.1;
+        time = maxTime;
+        newQuestion();
     }
 }
 document.onkeypress = function(key) {
