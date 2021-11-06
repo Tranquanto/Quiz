@@ -104,7 +104,6 @@ function submit() {
         time = maxTime;
         document.getElementById("timer").max = maxTime;
         score += diffInc;
-        document.getElementById("score").innerText = "Score: " + String(score);
         newQuestion();
     } else {
         score -= diffInc;
@@ -115,6 +114,7 @@ function submit() {
         time = maxTime;
         newQuestion();
     }
+    document.getElementById("score").innerText = "Score: " + String(score);
 }
 document.onkeypress = function(key) {
     if (key.key === "Enter") {
