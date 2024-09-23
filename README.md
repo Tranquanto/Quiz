@@ -12,4 +12,4 @@ The difficulty increases over time and you can change how fast it gets harder
 
 ### Play
 
-link [here](https://dragon77mathbye.github.io/Quiz/quiz.html)
+link [here](https://tranquanto.github.io/Quiz/quiz.html)
